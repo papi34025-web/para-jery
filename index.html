@@ -313,6 +313,15 @@
     </audio>
 
     <script>
+        // Desbloqueo de audio para móviles (Chrome, Safari, Android, iOS) - PEGA AQUÍ
+document.body.addEventListener('touchstart', function() {
+    const audio = document.getElementById('love-song');
+    if (audio) {
+        audio.play().catch(() => {});  // Intenta reproducir para desbloquear contexto
+        audio.pause();                 // Pausa inmediatamente (sin sonido audible)
+    }
+}, { once: true });
+
         function updateCounter() {
             const birthDate = new Date('1999-03-11T00:00:00');
             const now = new Date();
